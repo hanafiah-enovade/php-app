@@ -34,3 +34,26 @@ Provide a brief introduction to your PHP application. Describe what it does and 
 Provide instructions on how to use your application. Example:
 ```sh
 php index.php
+
+## Using Docker Compose
+
+1. Clone the repo and access to repo
+
+```sh
+git clone https://github.com/hanafiah-enovade/php-app.git
+cd php-app
+```
+
+2. Create containers using Docker Compose
+
+```sh
+docker compose up -d
+```
+
+3. Test the app
+
+Open browser http://localhost:8090 and the following is the sample result
+
+
+
+5. 
