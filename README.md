@@ -7,6 +7,7 @@ This repository contains a PHP application.
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Running the php app](#running-the-php-app)
 - [Docker Compose](#using-docker-compose)
 
 
