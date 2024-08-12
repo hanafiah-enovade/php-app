@@ -57,3 +57,6 @@ docker compose up -d
 
 Open browser http://localhost:8090 and the following is the sample result
 
+<img width="496" alt="image" src="https://github.com/user-attachments/assets/13b2dcb4-2f56-4f0e-96e1-bcd1a9c354df">
+
+
