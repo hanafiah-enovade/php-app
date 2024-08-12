@@ -7,8 +7,8 @@ This repository contains a PHP application.
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Docker Compose](#contributing)
+
 
 ## Introduction
 
@@ -31,11 +31,13 @@ Provide a brief introduction to your PHP application. Describe what it does and 
 
 ## Usage
 
+### Running the php app
 Provide instructions on how to use your application. Example:
 ```sh
 php index.php
+```
 
-## Using Docker Compose
+### Using Docker Compose
 
 1. Clone the repo and access to repo
 
@@ -54,6 +56,3 @@ docker compose up -d
 
 Open browser http://localhost:8090 and the following is the sample result
 
-
-
-5. 
