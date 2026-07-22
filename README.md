@@ -1,4 +1,4 @@
-# Malaysia Negeri Directory (PHP + MySQL + Docker)
+# Malaysia States Directory (PHP + MySQL + Docker)
 
 Simple PHP web app that reads a MySQL table and displays a list of Malaysian states (negeri).
 
