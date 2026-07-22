@@ -307,7 +307,7 @@ $conn->close();
     <nav class="navbar">
         <div class="navbar-container">
             <a href="/" class="navbar-brand">
-                <img src="enovade-logo.png" alt="Enovade Logo" class="navbar-logo">
+                <img src="https://enovade.com/wp-content/uploads/2021/06/Enovade-Logo-Blue-words-at-right-side-160x52.png" alt="Enovade Logo" class="navbar-logo">
                 
             </a>
             <ul class="navbar-nav">
