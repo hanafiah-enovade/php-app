@@ -1,73 +1,76 @@
-# Malaysia States Directory (PHP + MySQL + Docker)
+# Malaysia States Directory
 
-Simple PHP web app that reads a MySQL table and displays a list of Malaysian states (negeri).
+A PHP web app that queries a MySQL database and displays a styled directory of all 14 Malaysian states (*negeri*).
 
 ## Overview
 
-- Backend: PHP with `mysqli`
-- Database: MySQL
-- Orchestration: Docker Compose
-- Seed data: `mysql/negeri.sql`
+- **Language:** PHP 8.0+ with `mysqli`
+- **Database:** MySQL (remote or local)
+- **Server:** PHP built-in development server
+- **Frontend:** Vanilla HTML/CSS (no framework)
 
-The app queries the `negeri` table from database `malaysia` and renders the results as an HTML list.
+The app connects to the `negeri` table in the `malaysia` database and renders the results in a responsive HTML table with a navigation bar and footer.
 
 ## Project Structure
 
 ```text
-docker-compose.yml      # Runs PHP-Apache and MySQL services
-index.php               # Root PHP entrypoint (local/dev compatible)
-mysql/
-    negeri.sql            # DB schema + seed data for negeri table
-php/
-    src/
-        index.php           # Docker-served web entrypoint
+index.php       # Main PHP application (DB query + HTML output)
+setup.sh        # Setup and launch script (installs deps, starts server)
+.env            # Optional — local DB credentials (not committed)
 ```
 
-## Quick Start (Docker)
+## Quick Start
 
-1. Start containers:
+Run the setup script — it will detect or install PHP with `mysqli`, then start the server:
 
 ```sh
-docker compose up -d
+bash setup.sh
 ```
 
-2. Open in browser:
+Then open your browser at:
 
-```text
-http://localhost:8090
+```
+http://localhost:8080
 ```
 
-3. Stop containers when done:
+To use a custom port:
 
 ```sh
-docker compose down
+PORT=9000 bash setup.sh
 ```
 
-## Running Root Script Locally (Optional)
+## Database Configuration
 
-You can run the root script directly if you already have MySQL running:
+The app reads connection settings from environment variables or a `.env` file in the project root. Create `.env` to override the defaults:
 
-```sh
-php index.php
+```ini
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASSWORD=rahsia
+DB_NAME=malaysia
 ```
 
-Optional environment variables for DB connection:
+| Variable | Default | Description |
+|---|---|---|
+| `DB_HOST` | `188.166.208.200` | MySQL host |
+| `DB_USER` | `root` | MySQL username |
+| `DB_PASSWORD` | `rahsia` | MySQL password |
+| `DB_NAME` | `malaysia` | Database name |
 
-- `DB_HOST` (default: `localhost`)
-- `DB_USER` (default: `root`)
-- `DB_PASS` (default: `rahsia`)
-- `DB_NAME` (default: `malaysia`)
+## Database Schema
 
-Example:
+The app expects a `negeri` table in the configured database:
 
-```sh
-DB_HOST=127.0.0.1 DB_USER=root DB_PASS=rahsia DB_NAME=malaysia php index.php
+```sql
+CREATE TABLE negeri (
+  id   INT AUTO_INCREMENT PRIMARY KEY,
+  nama TEXT
+);
 ```
 
-## Notes
+## Requirements
 
-- Docker app uses MySQL service host `db` inside the compose network.
-- MySQL root password is configured in `docker-compose.yml`.
-- Database data is persisted using the `mysql-php` named volume.
-
+- PHP 8.0 or higher
+- `mysqli` extension (installed automatically by `setup.sh` on Debian/Ubuntu/macOS)
+- Access to a MySQL instance with the `malaysia` database
 
