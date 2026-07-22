@@ -2,6 +2,9 @@
 
 A PHP web app that queries a MySQL database and displays a styled directory of all 14 Malaysian states (*negeri*).
 
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/91aecb68-b0d3-4eb1-affc-6a3bb81273e9" />
+
+
 ## Overview
 
 - **Language:** PHP 8.0+ with `mysqli`
