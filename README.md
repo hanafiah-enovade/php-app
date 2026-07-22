@@ -1,62 +1,73 @@
-# PHP App
+# Malaysia Negeri Directory (PHP + MySQL + Docker)
 
-This repository contains a PHP application.
+Simple PHP web app that reads a MySQL table and displays a list of Malaysian states (negeri).
 
-## Table of Contents
+## Overview
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Running the php app](#running-the-php-app)
-- [Docker Compose](#using-docker-compose)
+- Backend: PHP with `mysqli`
+- Database: MySQL
+- Orchestration: Docker Compose
+- Seed data: `mysql/negeri.sql`
 
+The app queries the `negeri` table from database `malaysia` and renders the results as an HTML list.
 
-## Introduction
+## Project Structure
 
-Provide a brief introduction to your PHP application. Describe what it does and its key features.
-
-## Installation
-
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/hanafiah-enovade/php-app.git
-    ```
-2. Navigate to the project directory:
-    ```sh
-    cd php-app
-    ```
-3. Install dependencies (if any):
-    ```sh
-    composer install
-    ```
-
-## Usage
-
-### Running the php app
-Provide instructions on how to use your application. Example:
-```sh
-php index.php
+```text
+docker-compose.yml      # Runs PHP-Apache and MySQL services
+index.php               # Root PHP entrypoint (local/dev compatible)
+mysql/
+    negeri.sql            # DB schema + seed data for negeri table
+php/
+    src/
+        index.php           # Docker-served web entrypoint
 ```
 
-### Using Docker Compose
+## Quick Start (Docker)
 
-1. Clone the repo and access to repo
-
-```sh
-git clone https://github.com/hanafiah-enovade/php-app.git
-cd php-app
-```
-
-2. Create containers using Docker Compose
+1. Start containers:
 
 ```sh
 docker compose up -d
 ```
 
-3. Test the app
+2. Open in browser:
 
-Open browser http://localhost:8090 and the following is the sample result
+```text
+http://localhost:8090
+```
 
-<img width="496" alt="image" src="https://github.com/user-attachments/assets/13b2dcb4-2f56-4f0e-96e1-bcd1a9c354df">
+3. Stop containers when done:
+
+```sh
+docker compose down
+```
+
+## Running Root Script Locally (Optional)
+
+You can run the root script directly if you already have MySQL running:
+
+```sh
+php index.php
+```
+
+Optional environment variables for DB connection:
+
+- `DB_HOST` (default: `localhost`)
+- `DB_USER` (default: `root`)
+- `DB_PASS` (default: `rahsia`)
+- `DB_NAME` (default: `malaysia`)
+
+Example:
+
+```sh
+DB_HOST=127.0.0.1 DB_USER=root DB_PASS=rahsia DB_NAME=malaysia php index.php
+```
+
+## Notes
+
+- Docker app uses MySQL service host `db` inside the compose network.
+- MySQL root password is configured in `docker-compose.yml`.
+- Database data is persisted using the `mysql-php` named volume.
 
 
